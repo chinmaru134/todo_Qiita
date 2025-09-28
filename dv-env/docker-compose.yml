@@ -1,0 +1,25 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    networks:
+      - common-net
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "自分で決める"
+      MYSQL_USER: "自分で決める"
+      MYSQL_PASSWORD: "自分で決める"
+      MYSQL_DATABASE: flask_db
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    restart: always
+
+volumes:
+  mysql_data:
+
+networks:
+  common-net:
+    external: true

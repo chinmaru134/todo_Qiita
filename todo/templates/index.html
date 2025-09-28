@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register("{{ url_for('static', filename='service-worker.js') }}");
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Todo App</h1>
+
+        <input type="text" id="task_title" placeholder="Add Todo">
+        <button id="addbtn">Add</button>
+
+
+        <form method="post" action="/sort/asc">
+            <button type="submit">Sort asc</button>
+        </form>
+
+        <form method="post" action="/sort/desc">
+            <button type="submit">Sort Desc</button>
+        </form>
+
+        <ul>
+            {% for todo in todo_list %}
+            <li>
+                {{ todo[1] }} - {{ todo[2] }}
+                <button class="delbtn" data-id="{{ todo[0] }}">Delete</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>

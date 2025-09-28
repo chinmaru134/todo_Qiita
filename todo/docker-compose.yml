@@ -1,0 +1,21 @@
+services:
+  flask: # Flaskアプリケーション
+    build: . # Dockerfileからビルド
+    ports:
+      - "5002:5002" # ホストの5001をコンテナの5000にマッピング
+    networks:
+      - common-net
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: "SQLのymlで書いた内容"
+      DB_PASSWORD: "SQLのymlで書いた内容"
+      DB_NAME: flask_db
+    #   FLASK_ENV: development  # デバッグモードを有効化
+    volumes:
+      - .:/app
+      - ./.env:/app/.env
+
+networks:
+  common-net:
+    external: true

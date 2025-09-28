@@ -1,0 +1,9 @@
+{
+    "name": "画像圧縮 あっしゅくま",
+    "short_name": "あっしゅくま",
+    "start_url": "/?utm_source=web_app_manifest",
+    "display": "standalone",
+    "orientation": "any",
+    "background_color": "#fff",
+    "theme_color": "#0aa574"
+}

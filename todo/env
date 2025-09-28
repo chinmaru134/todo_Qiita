@@ -1,0 +1,5 @@
+DB_HOST=db
+DB_PORT=3306
+DB_USER="SQLのymlで書いた内容"
+DB_PASSWORD="SQLのymlで書いた内容"
+DB_NAME=flask_db
